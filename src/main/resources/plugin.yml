@@ -1,0 +1,8 @@
+name: BountyTracker
+version: 1.0.0
+main: hu.itsbalint.bountytracker.BountyTrackerPlugin
+api-version: '1.21'
+commands:
+  bounty:
+    description: Bounty commands
+    usage: /bounty [add|list]
