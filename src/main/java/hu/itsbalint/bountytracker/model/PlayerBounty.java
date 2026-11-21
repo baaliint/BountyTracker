@@ -1,13 +1,15 @@
 package hu.itsbalint.bountytracker.model;
 
+import hu.itsbalint.bountytracker.currency.Currency;
 import hu.itsbalint.bountytracker.taxstrategy.TaxCalculationStrategy;
+
 import java.util.UUID;
 
-public class PlayerBounty extends AbstractBounty {
+public class PlayerBounty extends Bounty {
     private final boolean isPvpEvent;
 
-    public PlayerBounty(UUID targetId, UUID issuerId, double amount, TaxCalculationStrategy taxStrategy, boolean isPvpEvent) {
-        super(targetId, issuerId, amount, taxStrategy);
+    public PlayerBounty(UUID targetId, UUID issuerId, double amount, Currency currency, TaxCalculationStrategy taxStrategy, boolean isPvpEvent) {
+        super(targetId, issuerId, amount, currency, taxStrategy);
         this.isPvpEvent = isPvpEvent;
     }
 
