@@ -5,6 +5,6 @@ import org.bukkit.Material;
 
 public class EmeraldCurrency extends Currency {
     public EmeraldCurrency() {
-        super("EMERALD", "Smaragd", Material.EMERALD, NamedTextColor.GREEN, 8.0);
+        super("EMERALD", "Smaragd", Material.EMERALD, NamedTextColor.GREEN, 8.0, 4, 96);
     }
 }

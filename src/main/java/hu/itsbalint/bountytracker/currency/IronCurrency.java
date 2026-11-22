@@ -5,6 +5,6 @@ import org.bukkit.Material;
 
 public class IronCurrency extends Currency {
     public IronCurrency() {
-        super("IRON", "Vasrúd", Material.IRON_INGOT, NamedTextColor.WHITE, 2.0);
+        super("IRON", "Vasrúd", Material.IRON_INGOT, NamedTextColor.WHITE, 2.0, 16, 128);
     }
 }

@@ -9,13 +9,17 @@ public abstract class Currency {
     private final Material material;
     private final NamedTextColor color;
     private final double valueMultiplier;
+    private final int minAmount;
+    private final int maxAmount;
 
-    public Currency(String id, String displayName, Material material, NamedTextColor color, double valueMultiplier) {
+    public Currency(String id, String displayName, Material material, NamedTextColor color, double valueMultiplier, int minAmount, int maxAmount) {
         this.id = id;
         this.displayName = displayName;
         this.material = material;
         this.color = color;
         this.valueMultiplier = valueMultiplier;
+        this.minAmount = minAmount;
+        this.maxAmount = maxAmount;
     }
 
     public String getId() { return id; }
@@ -23,6 +27,8 @@ public abstract class Currency {
     public Material getMaterial() { return material; }
     public NamedTextColor getColor() { return color; }
     public double getValueMultiplier() { return valueMultiplier; }
+    public int getMinAmount() { return minAmount; }
+    public int getMaxAmount() { return maxAmount; }
 
     public static Currency fromInput(String input) {
         if (input == null) return null;

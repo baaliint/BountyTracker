@@ -15,3 +15,6 @@ Thumbs.db
 # Dynamic runtime data (Minecraft server output)
 *.log
 bounties.json
+
+# Workflows
+.github

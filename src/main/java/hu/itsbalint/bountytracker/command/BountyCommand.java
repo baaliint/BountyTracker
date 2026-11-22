@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BountyCommand implements TabExecutor {
-    private static final int MIN_BOUNTY = 8;
-    private static final int MAX_BOUNTY = 64;
-
     private final BountyManager bountyManager;
 
     public BountyCommand(BountyManager bountyManager) {
@@ -58,7 +55,7 @@ public class BountyCommand implements TabExecutor {
 
         if (args[0].equalsIgnoreCase("add")) {
             if (args.length < 4) {
-                sender.sendMessage(Component.text("Használat: /bounty add <játékos> <gyemant|smaragd|arany|vas> <" + MIN_BOUNTY + "-" + MAX_BOUNTY + ">", NamedTextColor.RED));
+                sender.sendMessage(Component.text("Használat: /bounty add <játékos> <gyemant|smaragd|arany|vas> <összeg>", NamedTextColor.RED));
                 return true;
             }
 
@@ -88,12 +85,12 @@ public class BountyCommand implements TabExecutor {
             try {
                 amount = Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
-                sender.sendMessage(Component.text("Kérlek egy érvényes számot adj meg " + MIN_BOUNTY + " és " + MAX_BOUNTY + " között!", NamedTextColor.RED));
+                sender.sendMessage(Component.text("Kérlek egy érvényes számot adj meg " + currency.getMinAmount() + " és " + currency.getMaxAmount() + " között!", NamedTextColor.RED));
                 return true;
             }
 
-            if (amount < MIN_BOUNTY || amount > MAX_BOUNTY) {
-                sender.sendMessage(Component.text("A fejpénz összege " + MIN_BOUNTY + " és " + MAX_BOUNTY + " között kell, hogy legyen!", NamedTextColor.RED));
+            if (amount < currency.getMinAmount() || amount > currency.getMaxAmount()) {
+                sender.sendMessage(Component.text(currency.getDisplayName() + " esetén a fejpénz összege " + currency.getMinAmount() + " és " + currency.getMaxAmount() + " között kell, hogy legyen!", NamedTextColor.RED));
                 return true;
             }
 
@@ -142,7 +139,13 @@ public class BountyCommand implements TabExecutor {
         }
 
         if (args.length == 4 && args[0].equalsIgnoreCase("add")) {
-            return filterStartingWith(List.of("8", "16", "32", "64"), args[3]);
+            Currency currency = Currency.fromInput(args[2]);
+            if (currency != null) {
+                int min = currency.getMinAmount();
+                int max = currency.getMaxAmount();
+                int mid = (min + max) / 2;
+                return filterStartingWith(List.of(String.valueOf(min), String.valueOf(mid), String.valueOf(max)), args[3]);
+            }
         }
 
         return List.of();

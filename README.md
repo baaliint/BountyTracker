@@ -21,7 +21,7 @@ mvn clean test
 mvn clean package
 ```
 ### 2. Plugin telepítése és futtatása szerveren
-- Másold a `target/bountytracker-1.0.1.jar` fájlt a Minecraft szervered `plugins/` mappájába.
+- Másold a `target/bountytracker-1.0.2.jar` fájlt a Minecraft szervered `plugins/` mappájába.
 - Indítsd el a szervert a következő paranccsal:
 ```bash
   java -Xms2G -Xmx4G -jar server.jar nogui
@@ -29,7 +29,7 @@ mvn clean package
 - A szerver induláskor automatikusan létrehozza a `plugins/BountyTracker/bounties.json` fájlt az adatok tárolásához.
 
 ## Használat és Parancsok
-- `/bounty add <játékos> <érc> <összeg>`: Fejpénz kitűzése a megadott játékosra (8 és 64 érc között).
+- `/bounty add <játékos> <érc> <összeg>`: Fejpénz kitűzése a megadott játékosra.
 - `/bounty list`: Az aktív körözések kilistázása.
 - **Fejpénz begyűjtése:** Ha egy játékos megöli a körözött célpontot, automatikusan megkapja a levont adók után járó érceket az inventoryjába.
 
